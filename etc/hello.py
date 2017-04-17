@@ -25,4 +25,5 @@ if __name__ == '__main__':
     options = {
         'bind': '%s:%s' % ('0.0.0.0', '8080'),
     }
+    print('\n@1@', '\n')
     StandaloneApplication(app, options).run()
