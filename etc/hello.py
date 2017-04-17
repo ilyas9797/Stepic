@@ -1,17 +1,8 @@
 import gunicorn.app.base
 
-from __future__ import unicode_literals
-
-import multiprocessing
-
 from gunicorn.six import iteritems
 
 from ..hello import app
-
-
-def number_of_workers():
-    return (multiprocessing.cpu_count() * 2) + 1
-
 
 class StandaloneApplication(gunicorn.app.base.BaseApplication):
 
