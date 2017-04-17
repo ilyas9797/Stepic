@@ -5,4 +5,4 @@ def app(environ, start_response):
     ]
     start_response(status, headers)
     print('\n@1@', environ['QUERY_STRING'], '\n')
-    return [(param + '\r\n').encode('utf-8') for param in environ['QUERY_STRING']]
+    return iter([(param + '\r\n').encode('utf-8') for param in environ['QUERY_STRING']])
