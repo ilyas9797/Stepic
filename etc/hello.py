@@ -6,7 +6,7 @@ import multiprocessing
 
 from gunicorn.six import iteritems
 
-from .. import hello
+from ..hello import app
 
 
 def number_of_workers():
@@ -35,4 +35,4 @@ if __name__ == '__main__':
         'bind': '%s:%s' % ('0.0.0.0', '8080'),
         'workers': number_of_workers(),
     }
-    StandaloneApplication(hello.wsgi_app, options).run()
+    StandaloneApplication(app, options).run()
