@@ -7,17 +7,20 @@ from ..hello import app
 class StandaloneApplication(gunicorn.app.base.BaseApplication):
 
     def __init__(self, app, options=None):
+        print('\n@3@', app, '\n')
         self.options = options or {}
         self.application = app
         super(StandaloneApplication, self).__init__()
 
     def load_config(self):
+        print('\n@4@\n')
         config = dict([(key, value) for key, value in iteritems(self.options)
                        if key in self.cfg.settings and value is not None])
         for key, value in iteritems(config):
             self.cfg.set(key.lower(), value)
 
     def load(self):
+        print('\n@5@\n')
         return self.application
 
 
