@@ -1,0 +1,22 @@
+<ol>
+{% for q in questions %}
+  <li>
+    <a href="{{ q.get_url }}">{{ q }}</a>
+  </li>
+{% endfor %}
+</ol>
+<ul>
+  {% if page.has_previous %}
+    <li>
+      <a href="{{ base_url }}{{ page.previous_page_number }}">{{ page.previous_page_number }}</a>
+    </li>
+  {% endif %}
+  <li>
+    <a href="{{ base_url }}{{ page.number }}">{{ page.number }}</a>
+  </li>
+  {% if page.has_next %}
+    <li>
+      <a href="{{ base_url }}{{ page.next_page_number }}">{{ page.next_page_number }}</a>
+    </li>
+  {% endif %}
+</ul>
