@@ -14,7 +14,7 @@ class QuestionManager(models.Manager):
 class Question(models.Model):
     title = models.CharField(max_length=255)
     text = models.TextField()
-    added_at = models.DateField(blank = True, auto_now_add=True)
+    added_at = models.DateTimeField(blank = True, auto_now_add=True)
     rating = models.IntegerField(default = 0)
     author = models.ForeignKey(User, on_delete=models.DO_NOTHING)
     likes = models.ManyToManyField(User, related_name='question_like_user')
@@ -28,7 +28,10 @@ class Question(models.Model):
         return self.title
 
     def get_url(self):
-        return reverse('qa:question-detail', kwargs={'qid': self.id})
+        return reverse('qa:question-detail', args=(self.id,))
+
+    def get_creation_time(self):
+        return self.added_at
 
     class Meta:
         db_table = 'qa_questions'
@@ -37,12 +40,15 @@ class Question(models.Model):
 
 class Answer(models.Model):
     text = models.TextField()
-    added_at = models.DateField(blank = True, auto_now_add=True)
+    added_at = models.DateTimeField(blank = True, auto_now_add=True)
     question = models.ForeignKey(Question, on_delete=models.SET_NULL,
                                  null=True)
     author = models.ForeignKey(User, on_delete=models.DO_NOTHING)
 
     def __unicode__(self):
+        return self.text
+
+    def __str__(self):
         return self.text
 
     class Meta:

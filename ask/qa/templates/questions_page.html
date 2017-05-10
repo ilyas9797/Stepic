@@ -1,7 +1,7 @@
 <ol>
 {% for q in questions %}
   <li>
-    <a href="{{ q.get_url }}">{{ q }}</a>
+    <a href="{{ q.get_url }}">{{ q }} {{ q.get_creation_time }}</a>
   </li>
 {% endfor %}
 </ol>

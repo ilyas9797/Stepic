@@ -1,0 +1,5 @@
+<form class="form-horizontal" method="post" action="{% url 'qa:create-ask' %}">
+{% csrf_token %}
+{{ form.as_p }}
+<button type="submit" class="btn-primary">Сохранить</button>
+</form>

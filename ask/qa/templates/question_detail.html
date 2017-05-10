@@ -5,3 +5,8 @@
   <li>{{ a }}</li>
 {% endfor %}
 </ul>
+<form class="form-horizontal" method="post" action="{{ question.get_url }}">
+{% csrf_token %}
+{{ form.as_p }}
+<button type="submit" class="btn-primary">Сохранить</button>
+</form>
