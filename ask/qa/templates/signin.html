@@ -1,0 +1,8 @@
+{% if err %}
+    {{ err }}
+{% endif %}
+<form method="post" action="{% url 'qa:signin' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn-primary">Войти</button>
+</form>

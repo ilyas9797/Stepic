@@ -1,5 +1,10 @@
+{% extends "logout.html" %}
+{% block main %}
 <h1>{{ question }}</h1>
 <div class="question_text">{{ question.text }}</div>
+{% if question.author %}
+    Author: {{ question.author }}
+{% endif %}
 <ul>
 {% for a in answers %}
   <li>{{ a }}</li>
@@ -10,3 +15,4 @@
 {{ form.as_p }}
 <button type="submit" class="btn-primary">Сохранить</button>
 </form>
+{% endblock %}
